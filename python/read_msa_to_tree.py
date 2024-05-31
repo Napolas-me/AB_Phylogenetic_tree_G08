@@ -5,7 +5,7 @@ from Bio import Phylo
 from Bio.Phylo.TreeConstruction import DistanceTreeConstructor
 from Bio import AlignIO
 
-file = "./Species/alig_40.aln-clustalw"
+file = "./Species/alighn_40_k.aln-clustalw"
 # Open the alignment file as a MultipleSeqAlignment object 
 
 with open(file,"r") as clw: 
@@ -39,7 +39,6 @@ def remove_inner_labels(tree):
 remove_inner_labels(UPGMATree)
 
 # Make a better looking tree using the features of matplotlib 
-
 fig_size_y = 17
 fig_size_x = 24
 
@@ -51,7 +50,7 @@ axes = fig.add_subplot(1, 1, 1)
 
 # drawing the tree
 Phylo.draw(UPGMATree, axes=axes)
-fig.savefig("./Src/images/UPGMATree", dpi=200)
+fig.savefig("./python/images/UPGMATree", dpi=200)
 
 # Construct the phlyogenetic tree using NJ algorithm
 NJTree = constructor.nj(distance_matrix)
@@ -68,6 +67,6 @@ axes2 = fig2.add_subplot(1, 1, 1)
 Phylo.draw(NJTree, axes=axes2)
 
 # Save the figure
-fig2.savefig("./Src/images/NJTree", dpi=200)
+fig2.savefig("./python/images/NJTree", dpi=200)
 
 
