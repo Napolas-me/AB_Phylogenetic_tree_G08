@@ -46,10 +46,11 @@ plot_tree = function(tree_plot, title_plot, max_x) {
 }
 
 
+
 ### PREPARE AND PROCESS REQUIRED FILES ### 
 
 # Path to the Folder with the FASTA Files **CHANGE TO DESIRED PATH**
-folder_path <- "C:\\Mestrado\\1ano2semestre\\AlgoritmosBioinformatica\\Trabalho2\\Species\\Data"
+folder_path <- "C:\\Mestrado\\1ano2semestre\\AlgoritmosBioinformatica\\Trabalho2\\AB_Phylogenetic_tree_G08\\Species\\data"
 
 # List All FASTA Files in the Folder (.fasta and .fa)
 fasta_files <- list.files(path = folder_path, pattern = "\\.(fasta|fa)$", full.names = TRUE)
@@ -63,6 +64,9 @@ for (file in fasta_files) {
 # Convert Sequences to DNAStringSet Object
 biostrings_sequences = DNAStringSet(sequences)
 
+# Print Sequence Content
+print(biostrings_sequences)
+
 
 
 ### MULTIPLE SEQUENCE ALLIGNMENT ###
@@ -73,9 +77,7 @@ msa_result_sample = msa(biostrings_sequences,method = "ClustalW")
 # Obtain Sequence Names
 sequence_names = rownames(msa_result_sample)
 
-# Print Sequence Names, Sequence Content and MSA Results
-print(sequence_names)
-print(biostrings_sequences)
+# Print MSA Results
 print(msa_result_sample)
 
 
@@ -86,7 +88,7 @@ print(msa_result_sample)
 msa_result_string <- as.character(msa_result_sample)
 
 # Define the Output File Path **CHANGE TO DESIRED PATH**
-output_file <- "C:\\Mestrado\\1ano2semestre\\AlgoritmosBioinformatica\\Trabalho2\\MSA.txt"
+output_file <- "C:\\Mestrado\\1ano2semestre\\AlgoritmosBioinformatica\\Trabalho2\\AB_Phylogenetic_tree_G08\\R\\MSA.txt"
 
 # Write the MSA Result to a Text File
 write(msa_result_string, file = output_file)
@@ -108,7 +110,7 @@ print(D_hamming)
 
 
 
-### TREE BUILDING ALGORITHMs ###
+### TREE BUILDING METHODS ###
 
 #Hamming Distance for Tree Algorithms
 D_hamming = dist.hamming(phyDat_msa_sample)
